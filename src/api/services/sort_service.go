@@ -5,5 +5,5 @@ import (
 )
 
 func Sort(elements []int) {
-	sort.BubbleSort(elements)
+	sort.Sort(elements)
 }
