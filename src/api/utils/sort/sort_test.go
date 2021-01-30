@@ -6,7 +6,7 @@ import (
 )
 
 func TestBubbleSortOrderIncreasing(t *testing.T) {
-	elements := getElements(10)
+	elements := GetElements(10)
 
 	assert.NotNil(t, elements)
 	assert.EqualValues(t, 10, len(elements))
@@ -22,7 +22,7 @@ func TestBubbleSortOrderIncreasing(t *testing.T) {
 }
 
 func TestSortOrderIncreasing(t *testing.T) {
-	elements := getElements(10)
+	elements := GetElements(10)
 
 	Sort(elements)
 
@@ -32,13 +32,13 @@ func TestSortOrderIncreasing(t *testing.T) {
 }
 
 func BenchmarkBubbleSort(b *testing.B) {
-	elements := getElements(100000)
+	elements := GetElements(100000)
 	for i := 0; i < b.N; i++ {
 		BubbleSort(elements)
 	}
 }
 func BenchmarkSort(b *testing.B) {
-	elements := getElements(100000)
+	elements := GetElements(100000)
 	for i := 0; i < b.N; i++ {
 		Sort(elements)
 	}
