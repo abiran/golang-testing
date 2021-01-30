@@ -1,12 +1,13 @@
 package sort
 
-import "sort"
+import (
+	"sort"
+)
 
 func BubbleSort(elements []int) {
 	keepWorking := true
 	for keepWorking {
 		keepWorking = false
-
 		for i := 0; i < len(elements)-1; i++ {
 			if elements[i] > elements[i+1] {
 				keepWorking = true
@@ -18,4 +19,14 @@ func BubbleSort(elements []int) {
 
 func Sort(elements []int) {
 	sort.Ints(elements)
+}
+
+func getElements(n int) []int {
+	result := make([]int, n)
+	j := 0
+	for i := n - 1; i > 0; i-- {
+		result[j] = i
+		j++
+	}
+	return result
 }
