@@ -14,6 +14,7 @@ func TestMain(m *testing.M) {
 }
 
 func TestGetCountryRestClientError(t *testing.T) {
+	rest.FlushMockups()
 	rest.AddMockups(&rest.Mock{
 		URL:          "https://api.mercadolibre.com/countries/US",
 		HTTPMethod:   http.MethodGet,
@@ -27,6 +28,7 @@ func TestGetCountryRestClientError(t *testing.T) {
 }
 
 func TestGetCountryCountryNotFound(t *testing.T) {
+	rest.FlushMockups()
 	rest.AddMockups(&rest.Mock{
 		URL:          "https://api.mercadolibre.com/countries/US",
 		HTTPMethod:   http.MethodGet,
@@ -41,6 +43,7 @@ func TestGetCountryCountryNotFound(t *testing.T) {
 }
 
 func TestGetCountryInvalidErrorInterface(t *testing.T) {
+	rest.FlushMockups()
 	rest.AddMockups(&rest.Mock{
 		URL:          "https://api.mercadolibre.com/countries/US",
 		HTTPMethod:   http.MethodGet,
@@ -55,6 +58,7 @@ func TestGetCountryInvalidErrorInterface(t *testing.T) {
 }
 
 func TestGetCountryInvalidJsonResponse(t *testing.T) {
+	rest.FlushMockups()
 	rest.AddMockups(&rest.Mock{
 		URL:          "https://api.mercadolibre.com/countries/US",
 		HTTPMethod:   http.MethodGet,
@@ -69,6 +73,7 @@ func TestGetCountryInvalidJsonResponse(t *testing.T) {
 }
 
 func TestGetCountryNoError(t *testing.T) {
+	rest.FlushMockups()
 	rest.AddMockups(&rest.Mock{
 		URL:          "https://api.mercadolibre.com/countries/US",
 		HTTPMethod:   http.MethodGet,
