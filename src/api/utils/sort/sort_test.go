@@ -26,7 +26,7 @@ func TestSortOrderIncreasing(t *testing.T) {
 
 	Sort(elements)
 
-	assert.EqualValues(t, 1, elements[0], "first element should be 0")
+	assert.EqualValues(t, 0, elements[0], "first element should be 0")
 	assert.EqualValues(t, 9, elements[len(elements)-1], "last element should be 9")
 
 }
