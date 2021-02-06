@@ -6,6 +6,21 @@ import (
 	"github.com/abiran/golang-testing/src/api/utils/errors"
 )
 
-func GetCountry(countryId string) (*locations.Country, *errors.ApiError) {
+type locationsService struct {
+}
+
+type locationsServiceInterface interface {
+	GetCountry(countryId string) (*locations.Country, *errors.ApiError)
+}
+
+var (
+	LocationsService locationsServiceInterface
+)
+
+func init() {
+	LocationsService = &locationsService{}
+}
+
+func (s *locationsService) GetCountry(countryId string) (*locations.Country, *errors.ApiError) {
 	return locations_provider.GetCountry(countryId)
 }
