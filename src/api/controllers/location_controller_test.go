@@ -50,5 +50,26 @@ func TestGetCountryNotFound(t *testing.T) {
 	assert.Nil(t, err)
 	assert.EqualValues(t, http.StatusNotFound, apiErr.Status)
 	assert.EqualValues(t, "Country not found", apiErr.Message)
+}
 
+func TestGetCountryNoError(t *testing.T) {
+	// mock LocationsService methods:
+	getCountryFunc = func(countryId string) (*locations.Country, *errors.ApiError) {
+		return &locations.Country{Id: "US", Name: "United States"}, nil
+	}
+	services.LocationsService = &locationsServiceMock{}
+	response := httptest.NewRecorder()
+	c, _ := gin.CreateTestContext(response)
+	c.Request, _ = http.NewRequest(http.MethodGet, "", nil)
+	c.Params = gin.Params{
+		{Key: "country_id", Value: "US"},
+	}
+	GetCountry(c)
+
+	assert.EqualValues(t, http.StatusOK, response.Code)
+	var country locations.Country
+	err := json.Unmarshal(response.Body.Bytes(), &country)
+	assert.Nil(t, err)
+	assert.EqualValues(t, "US", country.Id)
+	assert.EqualValues(t, "United States", country.Name)
 }
