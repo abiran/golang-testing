@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/abiran/golang-testing/src/api/utils/errors"
-	"github.com/mercadolibre/golang-restclient/rest"
+	"github.com/federicoleon/golang-restclient/rest"
 	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"net/http"
